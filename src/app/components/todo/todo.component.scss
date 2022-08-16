@@ -1,0 +1,53 @@
+.todo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  .remove {
+    opacity: 0.1;
+    margin-left: -1.292vw;
+    margin-right: 0.1vw;
+    margin-top: -8px;
+
+    .mat-icon-button {
+      width: 1.192vw;
+      height: 1.192vw;
+      line-height: 1.192vw;
+    }
+
+    .mat-icon-button i, .mat-icon-button .mat-icon {
+      height: 0.990vw;
+      width: 0.990vw;
+      font-size: 0.990vw;
+      line-height: 0.990vw;
+    }
+  }
+  .remove:hover {
+    opacity: 1;
+  }
+
+  .checkbox {
+    width: 100%;
+    font-size: 0.875vw;
+  }
+
+  ::ng-deep .mat-checkbox-inner-container {
+    margin-top: 6px;
+  }
+
+  ::ng-deep .mat-checkbox-label {
+    margin-top: 4px;
+    white-space: normal;
+    line-height: 140%;
+  }
+}
+@media(max-width: 800px) {
+  .checkbox {
+    font-size: 2.275vw;
+  }
+}
+@media(max-width: 400px) {
+  .checkbox {
+    font-size: 3.275vw;
+  }
+}

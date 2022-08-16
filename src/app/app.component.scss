@@ -1,3 +1,49 @@
-h1 {
-  margin: 20px 0 0 20px;
+.header {
+  .title {
+    width: 100%;
+    text-align: center;
+  }
+}
+.categories {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 3vw;
+  margin-left: 7vw;
+  margin-right: 7vw;
+
+  .add {
+    opacity: 0.5;
+    padding: 0;
+    height: fit-content;
+
+    .mat-icon-button {
+      width: 3.692vw;
+      height: 3.692vw;
+      line-height: 3.692vw;
+    }
+    .mat-icon-button i, .mat-icon-button .mat-icon {
+      height: 2.190vw;
+      width: 2.190vw;
+      font-size: 2.190vw;
+      line-height: 2.190vw;
+    }
+  }
+  .add:hover {
+    opacity: 1;
+  }
+}
+@media(max-width: 800px) {
+  .categories {
+    margin-top: 30px;
+    gap: 5vw;
+  }
+}
+
+@media(max-width: 400px) {
+  .categories {
+    gap: 10vw;
+  }
 }

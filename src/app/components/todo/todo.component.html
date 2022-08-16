@@ -1,0 +1,6 @@
+<div class="todo">
+  <button class="remove" (click)="remove()" mat-icon-button color="basic" aria-label="Удалить">
+      <mat-icon fontIcon="remove"></mat-icon>
+  </button>
+  <mat-checkbox class="checkbox" [(ngModel)]="checked" (change)="update()">{{ text }}</mat-checkbox>
+</div>

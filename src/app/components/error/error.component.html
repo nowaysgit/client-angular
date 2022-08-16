@@ -1,0 +1,9 @@
+<footer *ngIf="errorService.error$ | async as error">
+  <mat-toolbar class="error">
+    <span class="title">Кажется что-то пошло не так :(</span>
+    <span class="text">{{ error }}</span>
+    <button (click)="errorService.clear()" class="close" mat-icon-button color="basic" aria-label="Закрыть">
+        <mat-icon fontIcon="close"></mat-icon>
+    </button>
+  </mat-toolbar>
+</footer>

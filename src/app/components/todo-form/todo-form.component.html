@@ -1,0 +1,33 @@
+<form class="modal" [formGroup]="form">
+  <h1 mat-dialog-title>Новая задача</h1>
+  <div mat-dialog-content>
+    <mat-form-field appearance="standard">
+      <mat-label>Текст</mat-label>
+      <input matInput [formControl]="convertToFormControl(form.controls.text)" placeholder="Текст">
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Категория</mat-label>
+      <input type="text"
+             placeholder="Категория"
+             aria-label="Категория"
+             matInput
+             [formControl]="convertToFormControl(form.controls.category)"
+             [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+  <div class="error" *ngIf="isControlInvalid('text')">
+   В тексте должно быть больше 1 символа
+  </div>
+  <div class="error" *ngIf="isControlInvalid('category')">
+   В категории должно быть больше 1 символа
+  </div>
+  <div mat-dialog-actions [ngClass]="{'margin': !isControlInvalid('category') && !isControlInvalid('text')}">
+    <button mat-button [mat-dialog-close]="form.value" [disabled]="form.invalid" cdkFocusInitial>Добавить</button>
+    <button mat-button (click)="close()">Отмена</button>
+  </div>
+</form>

@@ -1,0 +1,15 @@
+<mat-card class="card">
+  <mat-card-title class="title">{{ title }}</mat-card-title>
+  <mat-card-content>
+    <app-todo *ngFor="let todo of todos" [id]="todo.id" [checked]="todo.isCompleted" [text]="todo.text" [categoryId]="todo.categoryId"></app-todo>
+  </mat-card-content>
+  <mat-progress-bar class="bar" mode="determinate" [value]="progress"></mat-progress-bar>
+  <mat-card-actions>
+    <button (click)="add()" mat-icon-button color="basic" aria-label="Добавить новую задачу">
+        <mat-icon fontIcon="add"></mat-icon>
+    </button>
+  </mat-card-actions>
+  <button class="remove" (click)="remove()" mat-icon-button color="basic" aria-label="Удалить">
+      <mat-icon fontIcon="delete_forever"></mat-icon>
+  </button>
+</mat-card>

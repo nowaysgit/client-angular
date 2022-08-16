@@ -1,0 +1,28 @@
+.modal {
+  padding: 0.5vw;
+  min-width: 348px;
+
+  .mat-dialog-content {
+    display: flex;
+    flex-direction: column;
+  }
+  .mat-dialog-actions {
+    justify-content: center;
+    align-items: self-end;
+    padding: 0;
+    margin-bottom: 10px;
+
+    &.margin {
+      margin-top: 40px;
+    }
+  }
+
+  input.ng-touched.ng-invalid {
+   border-color: red;
+  }
+
+  mat-select.ng-touched.ng-invalid {
+   border-color: red;
+  }
+}
+

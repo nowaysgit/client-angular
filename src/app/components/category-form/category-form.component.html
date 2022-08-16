@@ -1,0 +1,16 @@
+<form class="modal" [formGroup]="form">
+  <h1 mat-dialog-title>Новая категория</h1>
+  <div mat-dialog-content>
+    <mat-form-field appearance="standard">
+      <mat-label>Категория</mat-label>
+      <input matInput [formControl]="convertToFormControl(form.controls.title)" placeholder="Текст">
+    </mat-form-field>
+  </div>
+  <div class="error" *ngIf="isControlInvalid('title')">
+   В категории должно быть больше 1 символа<br/>Категория должна быть уникальна
+  </div>
+  <div mat-dialog-actions [ngClass]="{'margin': !isControlInvalid('title')}">
+    <button mat-button [mat-dialog-close]="form.value" [disabled]="form.invalid" cdkFocusInitial>Добавить</button>
+    <button mat-button (click)="close()">Отмена</button>
+  </div>
+</form>
