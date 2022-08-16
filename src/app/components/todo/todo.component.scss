@@ -42,12 +42,16 @@
   }
 }
 @media(max-width: 800px) {
-  .checkbox {
-    font-size: 2.275vw;
+  .todo {
+    .checkbox {
+      font-size: 2.275vw;
+    }
   }
 }
 @media(max-width: 400px) {
-  .checkbox {
-    font-size: 3.275vw;
+  .todo {
+    .checkbox {
+      font-size: 3.275vw;
+    }
   }
 }
