@@ -12,13 +12,35 @@
   gap: 0.2vw;
   padding-top: 2vw;
   opacity: 0;
+  visibility: hidden;
   transition: all 800ms ease;
 
   &.showed {
     opacity: 1;
+    visibility: visible;
   }
 
   .bar {
     width: 30vw;
+  }
+}
+@media(max-width: 800px) {
+  .loader {
+    bottom: 5vw;
+    font-size: 1.6vw;
+
+    .bar {
+      width: 40vw;
+    }
+  }
+}
+@media(max-width: 400px) {
+  .loader {
+    bottom: 10vw;
+    font-size: 3.6vw;
+
+    .bar {
+      width: 50vw;
+    }
   }
 }
