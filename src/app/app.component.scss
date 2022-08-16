@@ -13,6 +13,7 @@
   gap: 3vw;
   margin-left: 7vw;
   margin-right: 7vw;
+  padding-bottom: 10vw;
 
   .add {
     opacity: 0.5;
@@ -39,11 +40,39 @@
   .categories {
     margin-top: 30px;
     gap: 5vw;
+
+    .add {
+      .mat-icon-button {
+        width: 7.692vw;
+        height: 7.692vw;
+        line-height: 7.692vw;
+      }
+      .mat-icon-button i, .mat-icon-button .mat-icon {
+        height: 5.190vw;
+        width: 5.190vw;
+        font-size: 5.190vw;
+        line-height: 5.190vw;
+      }
+    }
   }
 }
 
 @media(max-width: 400px) {
   .categories {
     gap: 10vw;
+
+    .add {
+      .mat-icon-button {
+        width: 17.692vw;
+        height: 17.692vw;
+        line-height: 17.692vw;
+      }
+      .mat-icon-button i, .mat-icon-button .mat-icon {
+        height: 13.190vw;
+        width: 13.190vw;
+        font-size: 13.190vw;
+        line-height: 13.190vw;
+      }
+    }
   }
 }
