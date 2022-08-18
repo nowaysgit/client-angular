@@ -31,6 +31,15 @@ export class CategoryFormComponent implements OnInit {
   options: string[];
   filteredOptions: Observable<string[]>;
 
+  ngOnInit(): void {
+    this.form = this.fb.group({
+      title: ['', [
+        Validators.required, Validators.minLength(1), Validators.maxLength(20), this.alreadyExist()
+      ]],
+    });
+    this.storeService.categories$.subscribe(result => this.options = result.map(x => x.title))
+  }
+
   isControlInvalid(controlName: string): boolean {
     const control = this.form.controls[controlName];
 
@@ -41,14 +50,6 @@ export class CategoryFormComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  ngOnInit(): void {
-    this.form = this.fb.group({
-      title: ['', [
-        Validators.required, Validators.minLength(1), Validators.maxLength(20), this.alreadyExist()
-      ]],
-    });
-    this.storeService.categories$.subscribe(result => this.options = result.map(x => x.title))
-  }
   convertToFormControl(absCtrl: AbstractControl | null): FormControl {
     return absCtrl as FormControl;
   }

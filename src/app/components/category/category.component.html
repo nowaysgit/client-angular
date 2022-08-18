@@ -1,7 +1,7 @@
 <mat-card class="card">
   <mat-card-title class="title">{{ title }}</mat-card-title>
   <mat-card-content>
-    <app-todo *ngFor="let todo of todos" [id]="todo.id" [checked]="todo.isCompleted" [text]="todo.text" [categoryId]="todo.categoryId"></app-todo>
+    <app-todo *ngFor="let todo of todos; trackBy: identify" [id]="todo.id" [checked]="todo.isCompleted" [text]="todo.text" [categoryId]="todo.categoryId"></app-todo>
   </mat-card-content>
   <mat-progress-bar class="bar" mode="determinate" [value]="progress"></mat-progress-bar>
   <mat-card-actions>

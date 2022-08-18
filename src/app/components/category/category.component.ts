@@ -22,6 +22,18 @@ export class CategoryComponent implements OnInit {
 
   progress: number;
 
+  ngOnInit(): void {
+    const count = this.todos.length
+    const isCompleted = this.todos.reduce(function (completed, current) {
+      return completed + (current.isCompleted ? 1 : 0);
+    }, 0)
+    this.progress = (isCompleted/count)*100;
+  }
+
+  identify(index: number, item: ITodo): number {
+     return item.id;
+  }
+
   add(): void {
     const dialogRef = this.dialog.open(TodoFormComponent, {
       data: {text: '', category: this.title},
@@ -34,13 +46,5 @@ export class CategoryComponent implements OnInit {
 
   remove(): void {
     this.categoryService.remove(this.id);
-  }
-
-  ngOnInit(): void {
-    const count = this.todos.length
-    const isCompleted = this.todos.reduce(function (completed, current) {
-      return completed + (current.isCompleted ? 1 : 0);
-    }, 0)
-    this.progress = (isCompleted/count)*100;
   }
 }

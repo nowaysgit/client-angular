@@ -25,16 +25,6 @@ export class TodoFormComponent implements OnInit {
   options: string[];
   filteredOptions: Observable<string[]>;
 
-  isControlInvalid(controlName: string): boolean {
-    const control = this.form.controls[controlName];
-
-    return control?.invalid && control?.touched;
-  }
-
-  close(): void {
-    this.dialogRef.close();
-  }
-
   ngOnInit(): void {
     this.form = this.fb.group({
       text: ['', [
@@ -50,6 +40,21 @@ export class TodoFormComponent implements OnInit {
       map(value => this._filter(value || '')),
     );
   }
+
+  identify(index: number, item: string): string {
+     return item;
+  }
+
+  isControlInvalid(controlName: string): boolean {
+    const control = this.form.controls[controlName];
+
+    return control?.invalid && control?.touched;
+  }
+
+  close(): void {
+    this.dialogRef.close();
+  }
+
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 

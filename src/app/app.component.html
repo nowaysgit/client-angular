@@ -4,7 +4,7 @@
   </mat-toolbar>
   <app-loader></app-loader>
   <section class="categories">
-    <app-category *ngFor="let category of storeService.categories$ | async" [id]="category.id" [title]="category.title" [todos]="category.todos!"></app-category>
+    <app-category *ngFor="let category of storeService.categories$ | async; trackBy: identify" [id]="category.id" [title]="category.title" [todos]="category.todos!"></app-category>
     <mat-card class="add">
       <button (click)="add()" mat-icon-button color="basic" aria-label="Добавить новую категорию">
           <mat-icon fontIcon="add"></mat-icon>
