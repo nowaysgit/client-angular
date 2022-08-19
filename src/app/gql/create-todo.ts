@@ -15,6 +15,7 @@ export const CREATE_TODO = gql`
        id
        text
        isCompleted
+       categoryId
     }
   }
 `
