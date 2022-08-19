@@ -12,6 +12,8 @@ import {GET_ALL_CATEGORIES, IGET_ALL_CATEGORIES} from "../gql/get-all-categories
 import {CREATE_CATEGORY, ICREATE_CATEGORY} from "../gql/create-category";
 import {IREMOVE_CATEGORY, REMOVE_CATEGORY} from "../gql/remove-category";
 import {StoreService} from "./store.service";
+import {Category} from "../models/category";
+import {plainToInstance} from "class-transformer";
 
 @Injectable()
 export class CategoryService {
@@ -29,7 +31,7 @@ export class CategoryService {
       query: GET_ALL_CATEGORIES
     }).valueChanges
       .pipe(
-        map(({data}) => data?.categories),
+        map(({data}) => data?.categories.map(x => plainToInstance(Category, x))),
         retry(3),
         tap(() => this.store.loading = false),
         catchError(this.errorService.handle.bind(this))
@@ -51,7 +53,7 @@ export class CategoryService {
         tap((category) => {
           this.store.categories$ = this.store.categories$.pipe(
             map((data) => {
-                return [...data, {...category!, todos: []}]
+                return [...data, plainToInstance(Category,{...category!, todos: []})]
               }
             )
           );

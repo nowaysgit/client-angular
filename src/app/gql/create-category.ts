@@ -1,8 +1,8 @@
 import {gql} from 'apollo-angular'
-import {ICategory} from "../models/category";
+import {Category} from "../models/category";
 
 export interface ICREATE_CATEGORY {
-  createCategory: ICategory
+  createCategory: Category
 }
 
 export const CREATE_CATEGORY = gql`

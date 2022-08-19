@@ -13,6 +13,8 @@ import {IREMOVE_TODO, REMOVE_TODO} from "../gql/remove-todo";
 import {CREATE_TODO, ICREATE_TODO} from "../gql/create-todo";
 import {StoreService} from "./store.service";
 import {IUPDATE_TODO, UPDATE_TODO} from "../gql/update-todo";
+import {plainToInstance} from "class-transformer";
+import {Category} from "../models/category";
 
 @Injectable()
 export class TodoService {
@@ -47,7 +49,7 @@ export class TodoService {
           this.store.categories$ = this.store.categories$.pipe(
             map((data) => {
               if(isCreateCategory) {
-                return [...data, {...todo!.category!, todos: [todo!]}]
+                return [...data,  plainToInstance(Category,{...data!, todos: [todo]})]
               }
               return data.map((category) => {
                 if (category.title !== categoryName) {

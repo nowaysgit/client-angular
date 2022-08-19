@@ -1,8 +1,8 @@
 import {gql} from 'apollo-angular'
-import {ICategory} from "../models/category";
+import {Category} from "../models/category";
 
 export interface IGET_ALL_CATEGORIES {
-  categories: ICategory[]
+  categories: Category[]
 }
 
 export const GET_ALL_CATEGORIES = gql`

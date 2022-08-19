@@ -1,8 +1,8 @@
 import {gql} from 'apollo-angular'
-import {ITodo} from "../models/todo";
+import {Todo} from "../models/todo";
 
 export interface IUPDATE_TODO {
-  updateTodo: ITodo
+  updateTodo: Todo
 }
 
 export const UPDATE_TODO = gql`

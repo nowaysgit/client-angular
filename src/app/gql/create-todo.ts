@@ -1,8 +1,8 @@
 import {gql} from 'apollo-angular'
-import {ITodo} from "../models/todo";
+import {Todo} from "../models/todo";
 
 export interface ICREATE_TODO {
-  createTodo: ITodo
+  createTodo: Todo
 }
 
 export const CREATE_TODO = gql`

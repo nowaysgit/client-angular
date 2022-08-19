@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
-import {ICategory} from "../models/category";
+import {Category} from "../models/category";
 
 @Injectable()
 export class StoreService {
   constructor() {
   }
 
-  categories$: Observable<ICategory[]>
+  categories$: Observable<Category[]>
   loading = false;
 }

@@ -1,7 +1,15 @@
-import {ITodo} from "./todo";
+import {Todo} from "./todo";
+import {Type} from "class-transformer";
 
-export interface ICategory {
+export class Category {
   id: number;
   title: string;
-  todos?: ITodo[] | null;
+  @Type(() => Todo)
+  todos?: Todo[] | null;
+
+  constructor(id: number, title: string, todos: Todo[] | null) {
+    this.id = id;
+    this.title = title;
+    this.todos = todos;
+  }
 }

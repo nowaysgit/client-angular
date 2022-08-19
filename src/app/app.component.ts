@@ -3,7 +3,7 @@ import {CategoryService} from "./services/category.service";
 import {MatDialog} from "@angular/material/dialog";
 import {CategoryFormComponent} from "./components/category-form/category-form.component";
 import {StoreService} from "./services/store.service";
-import {ICategory} from "./models/category";
+import {Category} from "./models/category";
 
 @Component({
   selector: 'app-root',
@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
     this.categoryService.updateAll();
   }
 
-   identify(index: number, item: ICategory): number {
+   identify(index: number, item: Category): number {
      return item.id;
   }
 

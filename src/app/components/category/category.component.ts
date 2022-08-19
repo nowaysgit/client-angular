@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ITodo} from '../../models/todo';
+import {Todo} from '../../models/todo';
 import {MatDialog} from "@angular/material/dialog";
 import {TodoFormComponent} from "../todo-form/todo-form.component";
 import {TodoService} from "../../services/todo.service";
@@ -18,7 +18,7 @@ export class CategoryComponent implements OnInit {
   @Input()
   title: string;
   @Input()
-  todos: ITodo[] = [];
+  todos: Todo[] = [];
 
   progress: number;
 
@@ -30,7 +30,7 @@ export class CategoryComponent implements OnInit {
     this.progress = (isCompleted/count)*100;
   }
 
-  identify(index: number, item: ITodo): number {
+  identify(index: number, item: Todo): number {
      return item.id;
   }
 
