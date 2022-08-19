@@ -49,7 +49,7 @@ export class TodoService {
           this.store.categories$ = this.store.categories$.pipe(
             map((data) => {
               if(isCreateCategory) {
-                return [...data,  plainToInstance(Category,{...data!, todos: [todo]})]
+                return [...data,  plainToInstance(Category,{...todo!.category!, todos: [todo]})]
               }
               return data.map((category) => {
                 if (category.title !== categoryName) {
