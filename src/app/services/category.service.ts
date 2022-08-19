@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {
   catchError,
@@ -44,7 +44,7 @@ export class CategoryService {
         input: {
           title: title,
         }
-      },
+      }
     }).pipe(
         map(({data}) => data?.createCategory),
         retry(3),
