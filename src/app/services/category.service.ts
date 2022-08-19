@@ -45,11 +45,18 @@ export class CategoryService {
           title: title,
         }
       },
-      refetchQueries: ['gtAllCategories']
     }).pipe(
         map(({data}) => data?.createCategory),
         retry(3),
-        tap(() => this.store.loading = false),
+        tap((category) => {
+          this.store.categories$ = this.store.categories$.pipe(
+            map((data) => {
+                return [...data, {...category!, todos: []}]
+              }
+            )
+          );
+          this.store.loading = false
+        }),
         catchError(this.errorService.handle.bind(this))
       ).subscribe({ error: e => this.errorService.handle(e) });
   }
@@ -61,11 +68,17 @@ export class CategoryService {
       variables: {
         id: +id
       },
-      refetchQueries: ['gtAllCategories']
     }).pipe(
         map(({data}) => data?.removeCategory),
         retry(3),
-        tap(() => this.store.loading = false),
+        tap((result) => {
+            if(result?.status === 1) {
+              this.store.categories$ = this.store.categories$.pipe(
+                map((x) => x.filter(x => x.id !== id)),
+              )
+            }
+            this.store.loading = false;
+          }),
         catchError(this.errorService.handle.bind(this))
       ).subscribe({ error: e => this.errorService.handle(e) });
   }
