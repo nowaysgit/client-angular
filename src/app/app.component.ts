@@ -32,6 +32,9 @@ export class AppComponent implements OnInit {
       exitAnimationDuration: '0ms'
     });
 
-    dialogRef.afterClosed().subscribe(result => this.categoryService.create(result.title));
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === undefined || result.category === null || result.text === null) return;
+      this.categoryService.create(result.title);
+    });
   }
 }

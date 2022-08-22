@@ -9,7 +9,6 @@ import {
   ValidatorFn,
   ValidationErrors
 } from '@angular/forms';
-import {Observable} from "rxjs";
 import {StoreService} from "../../services/store.service";
 
 export interface DialogData {
@@ -29,7 +28,6 @@ export class CategoryFormComponent implements OnInit {
 
   form: FormGroup;
   options: string[];
-  filteredOptions: Observable<string[]>;
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -47,6 +45,7 @@ export class CategoryFormComponent implements OnInit {
   }
 
   close(): void {
+    this.form.value.title = null;
     this.dialogRef.close();
   }
 
@@ -66,7 +65,7 @@ export class CategoryFormComponent implements OnInit {
             valid = false;
           }
         }
-        return !valid ? {alreadyExist:true} : null;
+        return !valid ? { alreadyExist: true } : null;
     }
-}
+  }
 }

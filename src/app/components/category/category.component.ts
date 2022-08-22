@@ -36,12 +36,15 @@ export class CategoryComponent implements OnInit {
 
   add(): void {
     const dialogRef = this.dialog.open(TodoFormComponent, {
-      data: {text: '', category: this.title},
+      data: {id: this.id, title: this.title},
       enterAnimationDuration: '0ms',
       exitAnimationDuration: '0ms'
     });
 
-    dialogRef.afterClosed().subscribe(result => this.todoService.create(result.category, result.text));
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === undefined || result.category === null || result.text === null) return;
+      this.todoService.create(result.category, result.text);
+    });
   }
 
   remove(): void {
